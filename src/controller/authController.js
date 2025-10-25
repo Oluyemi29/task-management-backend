@@ -101,8 +101,8 @@ const Login = async (req, res) => {
             res.cookie("task", token, {
                 maxAge: 1000 * 60 * 60 * 24 * 7,
                 httpOnly: true,
-                sameSite: "lax",
-                secure: process.env.MODE?.toString() === "production" ? true : false,
+                sameSite: "none",
+                secure: true,
             });
             return res.status(200).send({
                 success: true,

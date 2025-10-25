@@ -103,8 +103,8 @@ export const Login = async (req: Request, res: Response) => {
       res.cookie("task", token, {
         maxAge: 1000 * 60 * 60 * 24 * 7,
         httpOnly: true,
-        sameSite: "lax",
-        secure: process.env.MODE?.toString() === "production" ? true : false,
+        sameSite: "none",
+        secure: true,
       });
 
       return res.status(200).send({
@@ -131,7 +131,6 @@ export const Login = async (req: Request, res: Response) => {
 export const Logout = async (req: Request, res: Response) => {
   try {
     const { userId } = req.body;
-    
 
     if (!userId) {
       return res.status(400).send({
