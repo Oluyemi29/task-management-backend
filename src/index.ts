@@ -11,14 +11,14 @@ const app = express();
 
 app.use(express.json({ limit: "10MB" }));
 app.use(express.urlencoded({ limit: "10MB" }));
+app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.FrontendAPI as string,
+    origin: [process.env.FrontendAPI as string],
     credentials: true,
   })
 );
 app.use(morgan("dev"));
-app.use(cookieParser());
 
 app.use("/api", authRouter);
 app.use("/api", taskRouter);
