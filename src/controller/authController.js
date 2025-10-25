@@ -149,10 +149,14 @@ const Logout = async (req, res) => {
             });
         }
         // clearing cookies
-        res.clearCookie("task");
+        res.clearCookie("task", {
+            httpOnly: true,
+            sameSite: "none",
+            secure: true,
+        });
         return res.status(200).send({
             success: true,
-            message: "User registered successfully",
+            message: "Logout successfully",
         });
     }
     catch (error) {

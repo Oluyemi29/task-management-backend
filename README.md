@@ -36,7 +36,9 @@ Render (for deployment)
 Create a .env file in the root directory and include:
 
 DATABASE_URL=your_supabase_connection_url
+
 SECRET_KEY=your_jwt_secret
+
 PORT=5000
 
 FrontendAPI = your_frontend_url
